@@ -33,8 +33,8 @@
             });
 
             marker.addListener('click', function() {
-                map.setZoom(8);
-                map.setCenter(marker.getPosition());
+                window.location = "station_information"
+                /*window.open ("http://tempus-indicium.com/");*/
             });
         }
     </script>

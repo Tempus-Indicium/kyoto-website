@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('map', function(){
     return view('map_japan');
 });
+
+Route::get('station_information', function(){
+    return view('station_information');
+});
