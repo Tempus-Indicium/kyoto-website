@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('voorbeeld', 'ExampleController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
