@@ -29,7 +29,7 @@
             var marker = new google.maps.Marker({
                 position: myLatlng,
                 map: map,
-                title: 'Click to zoom'
+                title: 'Click for more info'
             });
 
             marker.addListener('click', function() {
