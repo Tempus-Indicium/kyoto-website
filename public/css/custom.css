@@ -1,0 +1,113 @@
+.intro-header {
+    background-attachment: scroll;
+}
+.form-control {
+	width: 200px;
+	margin: auto;
+}
+
+#logo {
+    /*margin-right: 5px;
+    margin-top: 5px;*/
+    height: 30px;
+    width: 30px;
+    margin-bottom: 7px;
+    margin-right: 5px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #d21919;
+    border-color: #d21919; 
+    /*#fb2e2e;*/
+}
+.btn-primary:hover {
+    background-color: #ad1212;
+}
+
+.btn-block {
+    width: 200px;
+    margin: auto;
+}
+.intro-divider{
+	border-color: #d21919;
+}
+footer {
+    position: absolute;
+    width: 100%;
+    background-color: #9c9898;
+}
+h1 {
+    color: #4a4848; /*#D7CDCC*/ /*#f8f8f8*/
+}
+h3 {
+    color: #b20c0c; /*#d21919;*/
+}
+h2 {
+    color: #686464;
+}
+.checkbox {
+    color: #A9A9A9;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #f8f8f8;
+}
+.navbar-default .navbar-brand {
+    color: #f8f8f8;
+}
+.navbar-default {
+    background-color: #d21919; /*#d10505;*/ /*#ea0404*/ /*#bf0404;*/
+    border-color: #7a0505; /*#b20c0c;*/
+    /*opacity: 0.6;*/
+}
+#inputEmail:focus {
+    outline: none;
+    border-color: #d21919;
+    box-shadow: 0 0 3px #d21919;
+} 
+#inputPassword:focus { /*visited, active, hover, focus*/
+    /*border-width: 2px;*/
+    outline: none;
+    border-color: #d21919;
+    box-shadow: 0 0 1px #d21919;
+    /*
+-webkit-box-shadow:0px 3px 3px #ad1212;
+ -moz-box-shadow:0px 3px 3px #ad1212;
+ box-shadow:0px 3px 3px #ad1212;*/
+}
+input {
+  position : relative;
+  width : 100px;
+  height : 100px;
+  background-color : gray;
+  border : 5px solid black;
+  /*
+  -webkit-transition : border 500ms ease-out;
+  -moz-transition : border 500ms ease-out;
+  -o-transition : border 500ms ease-out;
+  transition : border 500ms ease-out;
+  */
+}
+.checkbox input{
+    width: 32px;
+    height: 12px;
+}
+input[type="checkbox"]:focus, input[type="radio"]:focus {
+    outline: none;
+    width: 12px;
+    border-color: #d21919;
+    box-shadow: 0 0 1px #d21919;
+}
+input[type="checkbox"]:checked {
+    background: radial-gradient(circle at center, #d21919 .6ex, white .7ex);
+}
+/*
+.form-control {
+    transition: border-color ease-in-out 0.15s,box-shadow ease-in-out .15s;
+    transition-property: border-color, box-shadow;
+    transition-duration: 0.15s, 0.15s;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: initial, initial;
+}
+*/
+

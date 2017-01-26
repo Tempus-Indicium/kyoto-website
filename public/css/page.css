@@ -1,0 +1,22 @@
+.intro-header {
+    background: url(../img/WorldLowOpacity.png) no-repeat center center;
+    background-size: cover;
+}
+
+.intro-message {
+    padding-top: 20%;
+    padding-bottom: 0px;
+}
+
+.map {
+	width: 50%;
+	height: 400px;
+}
+
+.navbar-middle {
+	margin-right: 20%
+}
+
+footer {
+    text-align: center;
+}

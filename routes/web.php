@@ -30,3 +30,4 @@ Route::get('map', 'map@stationsJapan');
 Route::get('/stations', 'StationController@index');
 
 Route::get('station_information/{stn}', 'station_information@page');
+
