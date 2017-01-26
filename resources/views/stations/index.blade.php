@@ -26,6 +26,7 @@
     <tr>
         <th>#</th>
         <th>Country</th>
+        <th>Station</th>
         <th>Visibility</th>
     </tr>
     </thead>
@@ -35,7 +36,8 @@
 <tr>
     <td scope="row">{{ $i }}</td>
     <td>{{ $station->country }}</td>
-    <td>{{ $station->average }}</td>
+    <td>{{ $station->station }}</td>
+    <td>{{ number_format($station->average,2) }}</td>
 </tr>
     <?php $i++ ?>
 @endforeach
