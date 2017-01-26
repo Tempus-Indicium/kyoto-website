@@ -27,8 +27,6 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('map', 'map@stationsJapan');
 
-Route::get('station_information/{stn}', function(){
-    return view('station_information');
-});
-
 Route::get('/stations', 'StationController@index');
+
+Route::get('station_information/{stn}', 'station_information@page');
