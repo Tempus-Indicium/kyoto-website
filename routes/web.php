@@ -20,3 +20,4 @@ Route::get('voorbeeld', 'ExampleController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/stations', 'StationController@index');
