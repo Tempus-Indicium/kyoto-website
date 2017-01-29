@@ -27,6 +27,13 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
 <body>
@@ -34,6 +41,18 @@
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!--
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar">Something</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand topnav" href="#">Tempus Indicium</a>
+        </div> -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-middle" id="navbar middle">
             <ul class="nav navbar-nav navbar-middle">
                 <li>
@@ -50,6 +69,30 @@
                 </li>
             </ul>
         </div>
+
+        <!--
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div> -->
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
@@ -59,26 +102,8 @@
 <!-- Header -->
 <a name="about"></a>
 <div class="intro-header">
-    <h1>Top 10 stations based on visibility in Asia</h1>
-    <div class="table">
-        <table border="1">
-            <tr> <!-- tr = row -->
-                <th id="number">#</th> <!-- td = column -->
-                <th>Country</th>
-                <th>Station</th>
-                <th>Visibility (in kms)</th>
-            </tr>
-            <?php $i = 1; ?>
-            @foreach($stations as $station)
-                <tr class="alt">
-                    <td scope="row">{{ $i }}</td>
-                    <td>{{ $station->country }}</td>
-                    <td>{{ $station->station }}</td>
-                    <td>{{ number_format($station->average,2) }}</td>
-                </tr>
-                <?php $i++ ?>
-            @endforeach
-        </table>
+    <div class="map">
+
     </div>
 </div>
 <!-- /.container -->
@@ -114,4 +139,3 @@
 </body>
 
 </html>
-
