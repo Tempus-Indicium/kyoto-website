@@ -31,3 +31,5 @@ Route::get('/stations', 'StationController@index');
 
 Route::get('station_information/{stn}', 'station_information@page');
 
+Route::get('/help', 'HelpController@index');
+
