@@ -18,5 +18,3 @@ Route::get('/', function () {
 Route::get('map', 'map@stationsJapan');
 
 Route::get('station_information/{stn}', 'station_information@page');
-
-Route::get('ajax/{stn}', 'station_information@ajax');

@@ -77,9 +77,15 @@ class station_information extends Controller
 
     public function XasValues($end)
     {
+        $counter = 0;
         $array = [];
         for ($i = 0; $i <= $end; $i += 5){
-            array_push($array, $i);
+            if ($i % 60 == 0){
+                array_push($array, $counter);
+                $counter++;
+            }else {
+                array_push($array, ' ');
+            }
         }
         return $array;
     }
