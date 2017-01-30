@@ -1,0 +1,130 @@
+
+body, html {
+  height: 100%;
+  background-color: #9c9898;
+}
+.intro-header {
+    background-attachment: fixed;
+    padding-bottom: 7%;
+}
+.form-control {
+	width: 200px;
+	margin: auto;
+}
+
+#logo {
+    /*margin-right: 5px;
+    margin-top: 5px;*/
+    height: 30px;
+    width: 30px;
+    margin-bottom: 7px;
+    margin-right: 5px;
+}
+#logo-page {
+    height: 40px;
+    width: 40px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #d21919;
+    border-color: #d21919; 
+    /*#fb2e2e;*/
+}
+.btn-primary:hover {
+    background-color: #ad1212;
+}
+
+.btn-block {
+    width: 200px;
+    margin: auto;
+}
+.checkbox input{
+    width: 32px;
+    height: 12px;
+}
+input[type="checkbox"]:focus, input[type="radio"]:focus {
+    outline: none;
+    width: 12px;
+    border-color: #d21919;
+    box-shadow: 0 0 1px #d21919;
+}
+input[type="checkbox"]:checked {
+    background: radial-gradient(circle at center, #d21919 .6ex, white .7ex);
+}
+.intro-divider{
+	border-color: #d21919;
+}
+footer {
+    text-align: center;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    background-color: #9c9898;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    /*
+    margin: 0px 0px 0px 0px;
+    background-color: #9c9898;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    */
+}
+h1 {
+    color: #4a4848; /*#D7CDCC*/ /*#f8f8f8*/
+}
+h3 {
+    color: #b20c0c; /*#d21919;*/
+}
+h2 {
+    color: #686464;
+}
+.checkbox {
+    color: #A9A9A9;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #f8f8f8;
+}
+.navbar-default .navbar-brand {
+    color: #f8f8f8;
+}
+.navbar-default {
+    background-color: #d21919; /*#d10505;*/ /*#ea0404*/ /*#bf0404;*/
+    border-color: #7a0505; /*#b20c0c;*/
+    /*opacity: 0.6;*/
+}
+#inputEmail:focus {
+    outline: none;
+    border-color: #d21919;
+    box-shadow: 0 0 3px #d21919;
+} 
+#inputPassword:focus { /*visited, active, hover, focus*/
+    /*border-width: 2px;*/
+    outline: none;
+    border-color: #d21919;
+    box-shadow: 0 0 1px #d21919;
+}
+input {
+  position : relative;
+  width : 100px;
+  height : 100px;
+  background-color : gray;
+  border : 5px solid black;
+}
+.navbar-right {
+    margin-right: -200px;
+}
+#map {
+    height: 1000px;
+    width: 50%;
+    border-color: black;
+    margin: auto;
+    position:fixed;
+}
+.grafiek {
+    width: 75%;
+    margin: auto;
+}

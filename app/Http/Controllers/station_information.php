@@ -35,8 +35,8 @@ class station_information extends Controller
     public function getLastHumidity($stn, $amount)
     {
         $query = '
-        SELECT * from unwdmi.measurements
-        where stn = 475810
+        SELECT * from measurements
+        where stn = '.$stn.'
         order by id desc
         limit '.$amount.';';
         $data = DB::select($query);
@@ -58,11 +58,9 @@ class station_information extends Controller
 
     public function page($stn)
     {
-        //$data = $this->getLastNumberWithTimeDifference(30, 5, $stn);
-        //$data = $this->getHumidity($stn);
-        $data = $this->getLastHumidity($stn, 30);
+        $data = $this->getLastHumidity($stn, 121);
         $xas = $this->arrayConvert($this->XasValues(600));
-        return view('station_information', ['time'=>$xas, 'data' => $this->arrayConvert($data)]);
+        return view('station_information', ['xas'=>$xas, 'data' => $this->arrayConvert($data), 'stn' => $stn]);
     }
 
     public function arrayConvert($array)
@@ -79,11 +77,47 @@ class station_information extends Controller
 
     public function XasValues($end)
     {
+        $counter = 0;
         $array = [];
         for ($i = 0; $i <= $end; $i += 5){
-            array_push($array, $i);
+            if ($i % 60 == 0){
+                array_push($array, $counter);
+                $counter++;
+            }else {
+                array_push($array, ' ');
+            }
         }
         return $array;
     }
 
+    public function tableInfo($stn)
+    {
+        $query = '
+        SELECT temperature, dew, visibility from measurements
+        where stn = '.$stn.'
+        order by id desc
+        limit 1;';
+        $info = DB::select($query);
+        $Json = '';
+        foreach ($info as $row) {
+
+            $Json .= '"temperature":' . $row->temperature . ', ';
+            $Json .= '"humidity":' . $this->calculateHumidity($row->temperature, $row->dew) . ', ';
+            $Json .= '"visibility":' . $row->visibility;
+        }
+        return $info;
+    }
+
+    public function ajax($stn)
+    {
+        $data = $this->getLastHumidity($stn, 121);
+        $table = $this->tableInfo($stn);
+        //return view('ajaxJson', ['data' => $this->arrayConvert($data)]);
+        return response()->json([
+        'data' => $data,
+            'temperature' => $table[0]->temperature,
+            'visibility' => $table[0]->visibility
+
+    ]);
+    }
 }

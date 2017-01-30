@@ -4,54 +4,99 @@
 
 @section('head')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js" integrity="sha256-1qeNeAAFNi/g6PFChfXQfa6CQ8eXoHXreohinZsoJOQ=" crossorigin="anonymous"></script>
+    <style>
+        #myChart {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
 @endsection
 
 @section('content')
+<h1>Station page</h1>
+<div class="grafiek">
+    <canvas id="myChart"></canvas>
+</div>
 
-<h1>Dit is erg nuttige infomatie over het station</h1>
 
-<canvas id="myChart" width="400" height="400"></canvas>
+<table class="table">
+    <tr>
+        <th>Temperature in Celsius</th>
+        <td id="temperature">Loading..</td>
+    </tr>
+    <tr>
+        <th>Visibility in km</th>
+        <td id="visibility">Loading..</td>
+    </tr>
+</table>
+
+
+
+
 <script>
-    var points = {!! $test !!};
+    var points = {!! $data !!};
     var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
+    var temperature = document.getElementById('temperature');
+    var visibility = document.getElementById('visibility');
+
+
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: data = {
+            labels: {!! $xas !!},
+            datasets: [
+                {
+                    label: "humidity",
+                    backgroundColor: "rgba(75,192,192,0.4)",
+                    data: points,
+
+                }
+            ]
         },
+
         options: {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero:true
+                        max: 100,
+                        min: 0,
+                        stepSize: 5
                     }
                 }]
             }
         }
     });
-</script>
-</script>
 
+//    function sleep(ms) {
+//        return new Promise(resolve => setTimeout(resolve, ms));
+//    }
+//    async function demo() {
+//        console.log('Taking a break...');
+//        await sleep(2000);
+//        console.log('Two second later');
+//    }
+
+    //myLineChart.data.datasets[0].data[2] = 10;
+    //myLineChart.update();
+    function loadData() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function (table) {
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                myLineChart.data.datasets[0].data = myObj.data;
+                myLineChart.update();
+                temperature.innerHTML = myObj.temperature;
+                visibility.innerHTML = myObj.visibility;
+            }
+        };
+        xhttp.open("GET", "/ajax/{{ $stn }}", true);
+        xhttp.send();
+    }
+
+    setInterval(function(){
+        loadData(); // this will run after every 5 seconds
+    }, 5000);
+
+</script>
 
 @endsection
