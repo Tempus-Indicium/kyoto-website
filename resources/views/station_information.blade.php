@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-
+<h1>Station page</h1>
 <div class="grafiek">
     <canvas id="myChart"></canvas>
 </div>
@@ -22,11 +22,11 @@
 <table class="table">
     <tr>
         <th>Temperature in Celsius</th>
-        <td id="temperature">null</td>
+        <td id="temperature">Loading..</td>
     </tr>
     <tr>
         <th>Visibility in km</th>
-        <td id="visibility">null</td>
+        <td id="visibility">Loading..</td>
     </tr>
 </table>
 
