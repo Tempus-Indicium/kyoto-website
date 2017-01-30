@@ -113,4 +113,6 @@ input {
   background-color : gray;
   border : 5px solid black;
 }
-
+.navbar-right {
+    margin-right: -200px;
+}

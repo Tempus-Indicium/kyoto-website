@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--internet explorer edge, for serious? -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Miss Hoornvled">
+    <meta name="author" content="Miss Hoornveld">
 
     <title>Kyoto University Disaster Prevention Research Institute</title>
     <link href="img/favicon3.ico" rel="icon" type="image/x-icon" />
@@ -22,6 +22,7 @@
     <link href="css/landing-page.css" rel="stylesheet">
     <link href="css/page.css" rel="stylesheet">
     <link href="css/custom.css" type="text/css" rel="stylesheet">
+    @yield('opties')
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -39,7 +40,7 @@
             'csrfToken' => csrf_token(),
         ]); !!}
     </script>
-
+    @yield('head')
 </head>
 
 <body>
@@ -65,16 +66,16 @@
                     <img src="img/LogoKyotoBigWhite.png" id="logo-page" alt="Kyoto logo">
                 </li>
                 <li>
-                    <a href="#about">Map</a>
+                    <a href="{{route('map')}}">Map</a>
                 </li>
                 <li>
-                    <a href="#services">Top 10 Asia</a>
+                    <a href="{{route('stations')}}">Top 10 Asia</a>
                 </li>
                 <li>
-                    <a href="#services">Help</a>
+                    <a href="{{route('help')}}">Help</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right pull-right">
                 <!-- Authentication Links -->
             @if (Auth::guest())
                 <!-- <li><a href="{{ url('/login') }}">Login</a></li> -->
@@ -148,11 +149,11 @@
             <div class="col-lg-12">
                 <ul class="list-inline">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="{{route('home')}}">Home</a>
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
-                        <a href="#services">Help</a>
+                        <a href="{{route('help')}}">Help</a>
                     </li>
                 </ul>
                 <p class="copyright text-muted small">Copyright &copy; Tempus Indicium 2015. All Rights Reserved</p>

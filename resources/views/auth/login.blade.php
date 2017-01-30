@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--internet explorer edge, for serious? -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Miss Hoornvled">
+    <meta name="author" content="Miss Hoornveld">
 
     <title>Tempus Indicium - Disaster Prevention Research Institute</title>
     <link href="img/favicon3.ico" rel="icon" type="image/x-icon" />

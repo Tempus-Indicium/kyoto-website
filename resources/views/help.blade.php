@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('opties')
+    <link href="css/helppage.css" rel="stylesheet">
+@endsection
 @section('content')
     <h3>Help page</h3>
     <h1>Having trouble? We're here to help!</h1>

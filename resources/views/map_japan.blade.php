@@ -6,11 +6,8 @@
     <style>
         #map {
             height: 1000px;
-            width: 800px
-        }
-        .container {
-            height: 100%;
-            width: 100%;
+            width: 800px;
+            position:fixed;
         }
     </style>
 @endsection
