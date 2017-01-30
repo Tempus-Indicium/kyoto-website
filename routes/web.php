@@ -33,3 +33,5 @@ Route::get('station_information/{stn}', 'station_information@page');
 
 Route::get('/help', 'HelpController@index')->name('help');
 
+Route::get('ajax/{stn}', 'station_information@ajax');
+

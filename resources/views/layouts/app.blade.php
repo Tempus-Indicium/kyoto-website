@@ -13,19 +13,19 @@
     <meta name="author" content="Miss Hoornveld">
 
     <title>Kyoto University Disaster Prevention Research Institute</title>
-    <link href="img/favicon3.ico" rel="icon" type="image/x-icon" />
+    <link href="/img/favicon3.ico" rel="icon" type="image/x-icon" />
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/landing-page.css" rel="stylesheet">
-    <link href="css/page.css" rel="stylesheet">
-    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <link href="/css/landing-page.css" rel="stylesheet">
+    <link href="/css/page.css" rel="stylesheet">
+    <link href="/css/custom.css" type="text/css" rel="stylesheet">
     @yield('opties')
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -38,8 +38,9 @@
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
-        ]); !!}
+        ]) !!};
     </script>
+    @yield('title')
     @yield('head')
 </head>
 
@@ -63,7 +64,7 @@
         <div class="navbar-middle" id="navbar middle">
             <ul class="nav navbar-nav navbar-middle">
                 <li>
-                    <img src="img/LogoKyotoBigWhite.png" id="logo-page" alt="Kyoto logo">
+                    <img src="/img/LogoKyotoBigWhite.png" id="logo-page" alt="Kyoto logo">
                 </li>
                 <li>
                     <a href="{{route('map')}}">Map</a>

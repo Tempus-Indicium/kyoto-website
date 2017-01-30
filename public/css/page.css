@@ -3,7 +3,7 @@
     background-size: cover;
     color: #686464;
 	padding-top: 7%;
-	min-height: 650px;
+	min-height: 700px;
 }
 
 .intro-message {
@@ -11,10 +11,6 @@
     padding-bottom: 0px;
 }
 
-.map {
-	width: 50%;
-	border-color: black;
-}
 .square {
   border: solid 21px #f0f;
   width: 50px;

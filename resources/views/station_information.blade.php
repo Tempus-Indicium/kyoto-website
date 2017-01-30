@@ -5,10 +5,6 @@
 @section('head')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js" integrity="sha256-1qeNeAAFNi/g6PFChfXQfa6CQ8eXoHXreohinZsoJOQ=" crossorigin="anonymous"></script>
     <style>
-        .container {
-            height: 400px;
-            width: 1300px;
-        }
         #myChart {
             width: 500px;
             height: 500px;
@@ -18,17 +14,19 @@
 
 @section('content')
 
-<div id="demo"></div>
-<canvas id="myChart" width="400" height="400"></canvas>
+<div class="grafiek">
+    <canvas id="myChart"></canvas>
+</div>
 
-<table>
+
+<table class="table">
     <tr>
-        <th>Temperature</th>
-        <th id="temperature">null</th>
+        <th>Temperature in Celsius</th>
+        <td id="temperature">null</td>
     </tr>
     <tr>
-        <th>Visibility</th>
-        <th id="visibility">null</th>
+        <th>Visibility in km</th>
+        <td id="visibility">null</td>
     </tr>
 </table>
 
@@ -69,14 +67,14 @@
         }
     });
 
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    async function demo() {
-        console.log('Taking a break...');
-        await sleep(2000);
-        console.log('Two second later');
-    }
+//    function sleep(ms) {
+//        return new Promise(resolve => setTimeout(resolve, ms));
+//    }
+//    async function demo() {
+//        console.log('Taking a break...');
+//        await sleep(2000);
+//        console.log('Two second later');
+//    }
 
     //myLineChart.data.datasets[0].data[2] = 10;
     //myLineChart.update();

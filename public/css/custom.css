@@ -3,7 +3,7 @@ body, html {
   height: 100%;
 }
 .intro-header {
-    background-attachment: scroll;
+    background-attachment: fixed;
     padding-bottom: 7%;
 }
 .form-control {
@@ -115,4 +115,15 @@ input {
 }
 .navbar-right {
     margin-right: -200px;
+}
+#map {
+    height: 1000px;
+    width: 50%;
+    border-color: black;
+    margin: auto;
+    position:fixed;
+}
+.grafiek {
+    width: 75%;
+    margin: auto;
 }

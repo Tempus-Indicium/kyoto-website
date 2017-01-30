@@ -1,16 +1,8 @@
 @extends('layouts.app')
-
-@section('title', 'Stations in Japan')
-
-@section('head')
-    <style>
-        #map {
-            height: 1000px;
-            width: 800px;
-            position:fixed;
-        }
-    </style>
+@section('opties')
+    <link href="/css/mappage.css" rel="stylesheet">
 @endsection
+@section('title', 'Stations in Japan')
 
 @section('content')
     <div id="map"></div>

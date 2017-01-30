@@ -1,0 +1,26 @@
+.table {
+    width: 35%;
+    margin: 0 auto;
+    color: #4a4a4a;
+}
+th {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    background-color: #d21919;
+    color: white;
+    border: 1px solid #cccccc;
+    text-align: left;
+    padding: 8px;
+}
+td {
+    width: 150px;
+    border: 1px solid #cccccc;
+    text-align: left;
+    padding: 8px;
+    background-color: #ffffff;
+    /*opacity: 0.8;*/
+}
+.alt td {
+    background-color: #f2f2f2;
+    /*opacity: 0.8;*/
+}
