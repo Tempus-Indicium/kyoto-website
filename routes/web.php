@@ -11,27 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('/help', 'HelpController@index')->name('help');
+
+    Route::get('map', 'map@stationsJapan')->name('map');
+
+    Route::get('/stations', 'StationController@index')->name('stations');
+
+    Route::get('station_information/{stn}', 'station_information@page')->name('stninfo');
+
+    Route::get('ajax/{stn}', 'station_information@ajax');
 });
 
-Route::get('voorbeeld', 'ExampleController@index');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('map', 'map@stationsJapan')->name('map');
 
-Route::get('/stations', 'StationController@index')->name('stations');
 
-Route::get('station_information/{stn}', 'station_information@page');
 
-Route::get('/help', 'HelpController@index')->name('help');
 
-Route::get('ajax/{stn}', 'station_information@ajax');
+
+
+
 
