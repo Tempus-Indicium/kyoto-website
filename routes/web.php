@@ -17,13 +17,13 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/help', 'HelpController@index')->name('help');
 
-    Route::get('map', 'map@stationsJapan')->name('map');
+    Route::get('/map', 'map@stationsJapan')->name('map');
 
     Route::get('/stations', 'StationController@index')->name('stations');
 
-    Route::get('station_information/{stn}', 'station_information@page')->name('stninfo');
+    Route::get('/station_information/{stn}', 'station_information@page')->name('stninfo');
 
-    Route::get('ajax/{stn}', 'station_information@ajax');
+    Route::get('/ajax/{stn}', 'station_information@ajax');
 });
 
 Auth::routes();

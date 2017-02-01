@@ -119,7 +119,7 @@ input {
 }
 #map {
     height: 1000px;
-    width: 50%;
+    width: 85%;
     border-color: black;
     margin: auto;
     position:fixed;
