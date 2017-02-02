@@ -13,6 +13,22 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:api');
+
+Route::group(['namespace' => 'Api'], function () {
+    Route::get('/', function ()    {
+        return "test of the api routes";
+    });
+
+    Route::get('last-five-seconds/{stationId}', [
+         'name' => 'last-five-seconds',
+         'uses' => 'ApiController@lastFiveSeconds',
+    ]);
+
+    Route::get('last-five-seconds/{stationId}', [
+         'name' => 'last-five-seconds',
+         'uses' => 'ApiController@lastFiveSeconds',
+    ]);
+});
