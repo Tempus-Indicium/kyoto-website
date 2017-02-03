@@ -123,9 +123,9 @@
                                         </div>
                                         <div class="form-group">
                                                 <div class="checkbox">
-                                                    <label>
-                                                        <input id="remember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}> Remember Me
-                                                    </label>
+                                                <!--<label>
+                                                         <input id="remember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}> Remember Me
+                                                    </label>-->
                                                 </div>
                                         </div>
 

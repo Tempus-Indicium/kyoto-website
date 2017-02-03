@@ -64,7 +64,7 @@
         <div class="navbar-middle" id="navbar middle">
             <ul class="nav navbar-nav navbar-middle">
                 <li>
-                    <img src="/img/LogoKyotoBigWhite.png" id="logo-page" alt="Kyoto logo">
+                    <a href="/"><img src="/img/LogoKyotoBigWhite.png" id="logo-page" alt="Kyoto logo"></a>
                 </li>
                 <li>
                     <a href="{{route('map')}}">Map</a>
