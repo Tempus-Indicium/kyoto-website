@@ -12,11 +12,11 @@ class ApiController extends Controller
 
     public function lastFiveSeconds($stationId) {
         $fileName = FilestoreHandler::getCurrentFileName();
-        if ($fileName === false) {
+        if (!file_exists($fileName)) {
             return response()
             ->json([
                 'status' => 'error',
-                'error' => 'Corresponding measurements file could not be found',
+                'error' => 'Corresponding measurements file could not be found: '.$fileName,
             ]);
         }
 
@@ -52,6 +52,7 @@ class ApiController extends Controller
                 }
 
                 $temperature = FilestoreHandler::getSignedShort(substr($data, ($i-$c)+4 , 2));
+                // @TODO: test if variable needs correction..
                 $measurements[$stationId]['temperature'] += ($temperature / 10);
 
                 $dew = FilestoreHandler::getSignedShort(substr($data, ($i-$c)+6 , 2));
@@ -76,7 +77,7 @@ class ApiController extends Controller
         ->json(['measurementsOver1Second' => $measurements]);
     }
 
-    
+
 
 
 

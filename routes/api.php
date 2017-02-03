@@ -22,11 +22,7 @@ Route::group(['namespace' => 'Api'], function () {
         return "test of the api routes";
     });
 
-    Route::get('last-five-seconds/{stationId}', [
-         'name' => 'last-five-seconds',
-         'uses' => 'ApiController@lastFiveSeconds',
-    ]);
-
+    // TODO: change to post
     Route::get('last-five-seconds/{stationId}', [
          'name' => 'last-five-seconds',
          'uses' => 'ApiController@lastFiveSeconds',
