@@ -19,15 +19,8 @@ class FilestoreHandler
     public static function getCurrentFileName() {
         $carbon = Carbon::now('Europe/Amsterdam');
         $potentialFile = $carbon->format(env('FILESTORE_FORMAT'));
-        $potentialFile = "2017-02-02-22"; //@NOTE: debug!
+        // $potentialFile = "2017-02-04-16"; //@NOTE: debug!
         return env('FILESTORE_LOCATION').'/'.$potentialFile;
-    }
-
-    public static function getDataStringFromEOF($fileName, $length) {
-        $fileResource = fopen($fileName, 'rb');
-        $seekOffset = filesize($fileName) - $length;
-        fseek($fileResource, $seekOffset, SEEK_SET); // set the position at EOF-5sec
-        return fread($fileResource, $length);
     }
 
     public static function getUnsignedShort($byteArray) {
