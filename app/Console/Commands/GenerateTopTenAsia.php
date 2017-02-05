@@ -50,6 +50,9 @@ class GenerateTopTenAsia extends Command
         $arrFilenames = array_diff(scandir($filePath, SCANDIR_SORT_ASCENDING), ['..', '.']);
         foreach ($arrFilenames as $key => $value) {
             $fileDateArr = explode("-", $value); // Y-m-d-H
+            if (count($fileDateArr) != 4) {
+                unset($arrFilenames[$key]);
+            }
             if ($carbon->month == intval($fileDateArr[1]) && $carbon->day != intval($fileDateArr[2])) {
                 unset($arrFilenames[$key]);
             }
