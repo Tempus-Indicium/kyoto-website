@@ -52,6 +52,7 @@ class GenerateTopTenAsia extends Command
             $fileDateArr = explode("-", $value); // Y-m-d-H
             if (count($fileDateArr) != 4) {
                 unset($arrFilenames[$key]);
+                continue;
             }
             if ($carbon->month == intval($fileDateArr[1]) && $carbon->day != intval($fileDateArr[2])) {
                 unset($arrFilenames[$key]);
