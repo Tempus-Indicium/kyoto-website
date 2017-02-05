@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Lib\FilestoreHandler;
+use App\Lib\FileStoreHandler;
 use App\Station;
 use App\User;
 use Carbon\Carbon;
