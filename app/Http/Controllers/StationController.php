@@ -31,7 +31,7 @@ class StationController extends Controller
         }
 
         // dd($stations); //average average
-        return view("stations.index", ["stations" => $stations]);
+        return view("stations.index", ["stations" => $stations, "actualDate" => $carbonDate]);
     }
 
     /**
