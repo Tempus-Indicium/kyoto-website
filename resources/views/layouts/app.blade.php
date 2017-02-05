@@ -64,7 +64,9 @@
         <div class="navbar-middle" id="navbar middle">
             <ul class="nav navbar-nav navbar-middle">
                 <li>
-                    <a href="/"><img src="/img/LogoKyotoBigWhite.png" id="logo-page" alt="Kyoto logo"></a>
+                    <div class="logonav">
+                        <a href="/"><img src="/img/LogoKyotoBigWhite.png" id="logo-page" alt="Kyoto logo"></a>
+                    </div>
                 </li>
                 <li>
                     <a href="{{route('map')}}">Map</a>
@@ -83,7 +85,7 @@
                 <!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding-bottom:13px;">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
