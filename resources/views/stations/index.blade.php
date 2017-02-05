@@ -7,7 +7,7 @@
         <thead>
             <tr> <!-- tr = row -->
                 <th colspan="4">
-                    Date this list was generated: {{ $actualDate->toDateString() }}
+                    Date this list was generated: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $actualDate->toDateString() }}
                 </th>
             </tr>
             <tr> <!-- tr = row -->
