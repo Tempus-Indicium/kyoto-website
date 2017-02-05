@@ -12,20 +12,20 @@
     <meta name="description" content="">
     <meta name="author" content="Miss Hoornveld">
 
-    <title>Kyoto University Disaster Prevention Research Institute</title>
-    <link href="/img/favicon3.ico" rel="icon" type="image/x-icon" />
+    <title>Kyoto University Disaster Prevention Research Institute | @yield('title')</title>
+    <link href="{{ URL::asset('/img/favicon3.ico') }}" rel="icon" type="image/x-icon" />
 
     <!-- Bootstrap Core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ URL::asset('/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/css/landing-page.css" rel="stylesheet">
-    <link href="/css/page.css" rel="stylesheet">
-    <link href="/css/custom.css" type="text/css" rel="stylesheet">
+    <link href="{{ URL::asset('/css/landing-page.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('/css/page.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('/css/custom.css') }}" type="text/css" rel="stylesheet">
     @yield('opties')
 
     <!-- Custom Fonts -->
-    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ URL::asset('/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -40,8 +40,17 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    @yield('title')
-    @yield('head')
+
+    <!-- jQuery -->
+    <script src="{{ URL::asset('/js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ URL::asset('/js/bootstrap.min.js') }}"></script>
+
+    <!-- Chart.js 2.4.0 cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js" integrity="sha256-1qeNeAAFNi/g6PFChfXQfa6CQ8eXoHXreohinZsoJOQ=" crossorigin="anonymous"></script>
+
+    @yield('extra-header-ding')
 </head>
 
 <body>
@@ -164,12 +173,6 @@
         </div>
     </div>
 </footer>
-
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
 
 </body>
 

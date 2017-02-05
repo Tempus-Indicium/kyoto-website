@@ -17,7 +17,6 @@ class StationController extends Controller
     public function index()
     {
         //    $stations = Measurement::GetTopTen("2017-01-14");
-
         $carbonDate = Carbon::yesterday('Europe/Amsterdam');
         $stations = FilestoreHandler::getTopTenAsiaForDate($carbonDate);
 

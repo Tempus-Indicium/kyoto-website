@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Lib\FilestoreHandler;
+use App\Station;
 
 class station_information extends Controller
 {
@@ -32,18 +34,27 @@ class station_information extends Controller
         return $data;
     }
 
-    public function getLastHumidity($stn, $amount)
+    public function getLastHumidity($station, $amount)
     {
-        $query = '
-        SELECT * from measurements
-        where stn = '.$stn.'
-        order by id desc
-        limit '.$amount.';';
-        $data = DB::select($query);
+        // $query = '
+        // SELECT * from measurements
+        // where stn = '.$stn.'
+        // order by id desc
+        // limit '.$amount.';';
+        // $data = DB::select($query);
         $humidity_array = [];
-        foreach ($data as $row)
+
+        $fullFilePath = FilestoreHandler::getCurrentFileName();
+
+        // get a couple samples
+        $measurementsData = [];
+        for ($i=0; $i < $amount; $i++) {
+            $measurementsData[] = FilestoreHandler::getLastFiveSecondsForStation($station, $fullFilePath);
+        }
+
+        foreach ($measurementsData as $row)
         {
-            $humidity = $this->calculateHumidity($row->temperature, $row->dew);
+            $humidity = $this->calculateHumidity($row['temperature'], $row['dewp']);
             array_push($humidity_array, $humidity);
         }
         return $humidity_array;
@@ -51,16 +62,18 @@ class station_information extends Controller
 
     public function getHumidity($stn)
     {
-        $query = "SELECT temperature, dew FROM measurements where acquisition_date = '2017-01-14' and acquisition_time IN ('15:33:12','15:33:15') and stn = ".$stn;
-        $data = DB::select($query);
-        return $data;
+        // $query = "SELECT temperature, dew FROM measurements where acquisition_date = '2017-01-14' and acquisition_time IN ('15:33:12','15:33:15') and stn = ".$stn;
+        // $data = DB::select($query);
+        return $data; // throws error, @debugging
     }
 
     public function page($stn)
     {
-        $data = $this->getLastHumidity($stn, 121);
+        $station = Station::where(['id' => $stn])->first();
+
+        $data = $this->getLastHumidity($station, 5);
         $xas = $this->arrayConvert($this->XasValues(600));
-        return view('station_information', ['xas'=>$xas, 'data' => $this->arrayConvert($data), 'stn' => $stn]);
+        return view('station_information', ['xas'=>$xas, 'data' => $this->arrayConvert($data), 'stn' => $station]);
     }
 
     public function arrayConvert($array)
@@ -90,33 +103,36 @@ class station_information extends Controller
         return $array;
     }
 
-    public function tableInfo($stn)
+    public function tableInfo($station)
     {
-        $query = '
-        SELECT temperature, dew, visibility from measurements
-        where stn = '.$stn.'
-        order by id desc
-        limit 1;';
-        $info = DB::select($query);
+        // $query = '
+        // SELECT temperature, dew, visibility from measurements
+        // where stn = '.$stn.'
+        // order by id desc
+        // limit 1;';
+        // $info = DB::select($query);
+        $fullFilePath = FilestoreHandler::getCurrentFileName();
+        $info = [];
+        $info[] = FilestoreHandler::getLastFiveSecondsForStation($station, $fullFilePath);
         $Json = '';
         foreach ($info as $row) {
-
-            $Json .= '"temperature":' . $row->temperature . ', ';
-            $Json .= '"humidity":' . $this->calculateHumidity($row->temperature, $row->dew) . ', ';
-            $Json .= '"visibility":' . $row->visibility;
+            $Json .= '"temperature":' . $row['temperature'] . ', ';
+            $Json .= '"humidity":' . $this->calculateHumidity($row['temperature'], $row['dewp']) . ', ';
+            $Json .= '"visibility":' . $row['visibility'];
         }
         return $info;
     }
 
     public function ajax($stn)
     {
-        $data = $this->getLastHumidity($stn, 121);
-        $table = $this->tableInfo($stn);
+        $station = Station::where(['id' => $stn])->first();
+        $data = $this->getLastHumidity($station, 1);
+        $table = $this->tableInfo($station);
         //return view('ajaxJson', ['data' => $this->arrayConvert($data)]);
         return response()->json([
         'data' => $data,
-            'temperature' => $table[0]->temperature,
-            'visibility' => $table[0]->visibility
+            'temperature' => $table[0]['temperature'],
+            'visibility' => $table[0]['visibility']
 
     ]);
     }

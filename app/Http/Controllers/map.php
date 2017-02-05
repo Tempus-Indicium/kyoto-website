@@ -9,7 +9,7 @@ class map extends Controller
 {
     public function stationsJapan()
     {
-        $stations = DB::select("SELECT stn, name, latitude, longitude FROM stations_asia where country='JAPAN';");
+        $stations = DB::select("SELECT id, stn, name, latitude, longitude FROM stations_asia where country='JAPAN';");
         $markers = '';
         foreach ($stations as $station)
         {
@@ -18,7 +18,7 @@ class map extends Controller
                 map: map,
                 title: '".$station->name."'
             }).addListener('click', function() {
-                window.location = 'station_information/".$station->stn."';
+                window.location = 'station_information/".$station->id."';
             });
             ";
         }
