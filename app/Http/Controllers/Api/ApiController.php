@@ -6,11 +6,21 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Lib\FilestoreHandler;
 use App\Station;
+use App\User;
 
 class ApiController extends Controller
 {
 
-    public function lastFiveSeconds($stationId) {
+    public function lastFiveSeconds(Request $request, $stationId) {
+        $user = User::getUserFromRequest($request);
+        if (!$user) {
+            return response()
+            ->json([
+                'status' => 'error',
+                'error' => 'User could not be authenticated properly',
+            ]);
+        }
+
         $fullFilePath = FilestoreHandler::getCurrentFileName();
         if (!file_exists($fullFilePath)) {
             return response()
