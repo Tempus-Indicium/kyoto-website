@@ -7,9 +7,50 @@ use App\Http\Controllers\Controller;
 use App\Lib\FilestoreHandler;
 use App\Station;
 use App\User;
+use Carbon\Carbon;
 
 class ApiController extends Controller
 {
+
+    public function topTenAsia(Request $request, $dateString) {
+        $user = User::getUserFromRequest($request);
+        if (!$user) {
+            return response()
+            ->json([
+                'status' => 'error',
+                'error' => 'User could not be authenticated properly',
+            ]);
+        }
+        try {
+            $carbonDate = Carbon::createFromFormat(env('API_DATEFORMAT', 'Y-m-d'), $dateString);
+        } catch (\Exception $e) {
+            return response()
+            ->json([
+                'status' => 'error',
+                'error' => 'Date could not be parsed properly: '.$e->getMessage(),
+            ]);
+        }
+
+        // top-ten-asia-2017-2-4
+        $fileName = "top-ten-asia-".$carbonDate->year."-".$carbonDate->month."-".$carbonDate->day.".json";
+        $fullFilePath = env('FILESTORE_LOCATION').'/'.$fileName;
+        if (!file_exists($fullFilePath)) {
+            return response()
+            ->json([
+                'status' => 'error',
+                'error' => 'Corresponding Top-Ten data does not exist. Perhaps it was not generated yet.',
+            ]);
+        }
+
+        $jsonString = file_get_contents($fullFilePath);
+        $resultData = json_decode($jsonString, true);
+
+        return response()
+        ->json([
+            'status' => 'success',
+            'data' => $resultData,
+        ]);
+    }
 
     public function lastFiveSeconds(Request $request, $stationId) {
         $user = User::getUserFromRequest($request);

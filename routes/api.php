@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // })->middleware('auth:api');
 
-Route::group(['namespace' => 'Api'], function () {
+Route::group(['namespace' => 'Api', 'name' => 'api'], function () {
     Route::get('/', function ()    {
         return "test of the api routes";
     });
@@ -25,5 +25,10 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('last-five-seconds/{stationId}', [
          'name' => 'last-five-seconds',
          'uses' => 'ApiController@lastFiveSeconds',
+    ]);
+
+    Route::post('top-ten-asia/{dateString}', [
+         'name' => 'top-ten-asia',
+         'uses' => 'ApiController@topTenAsia',
     ]);
 });
