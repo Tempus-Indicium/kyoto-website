@@ -32,18 +32,14 @@ class ApiController extends Controller
         }
 
         // top-ten-asia-2017-2-4
-        $fileName = "top-ten-asia-".$carbonDate->year."-".$carbonDate->month."-".$carbonDate->day.".json";
-        $fullFilePath = env('FILESTORE_LOCATION').'/'.$fileName;
-        if (!file_exists($fullFilePath)) {
+        $resultData = FilestoreHandler::getTopTenAsiaForDate($carbonDate);
+        if (!$resultData) {
             return response()
             ->json([
                 'status' => 'error',
                 'error' => 'Corresponding Top-Ten data does not exist. Perhaps it was not generated yet.',
             ]);
         }
-
-        $jsonString = file_get_contents($fullFilePath);
-        $resultData = json_decode($jsonString, true);
 
         return response()
         ->json([

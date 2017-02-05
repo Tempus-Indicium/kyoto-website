@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use \App\Measurement;
 use Illuminate\Http\Request;
+use App\Lib\FilestoreHandler;
+use Carbon\Carbon;
 
 class StationController extends Controller
 {
@@ -14,8 +16,12 @@ class StationController extends Controller
      */
     public function index()
     {
-       $stations = Measurement::GetTopTen("2017-01-14");
-       #dd($stations); //average average
+        //    $stations = Measurement::GetTopTen("2017-01-14");
+
+        $carbonDate = Carbon::yesterday('Europe/Amsterdam');
+        $stations = FilestoreHandler::getTopTenAsiaForDate($carbonDate);
+
+        #dd($stations); //average average
         return view("stations.index", ["stations" => $stations]);
     }
 

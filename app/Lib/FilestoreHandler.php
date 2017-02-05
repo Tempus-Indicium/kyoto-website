@@ -16,6 +16,17 @@ class FilestoreHandler
 
     }
 
+    public static function getTopTenAsiaForDate($carbonDate) {
+        $fileName = "top-ten-asia-".$carbonDate->year."-".$carbonDate->month."-".$carbonDate->day.".json";
+        $fullFilePath = env('FILESTORE_LOCATION').'/'.$fileName;
+        if (!file_exists($fullFilePath)) {
+            return false;
+        }
+
+        $jsonString = file_get_contents($fullFilePath);
+        return json_decode($jsonString, true);
+    }
+
     public static function getCurrentFileName() {
         $carbon = Carbon::now('Europe/Amsterdam');
         $potentialFile = $carbon->format(env('FILESTORE_FORMAT'));

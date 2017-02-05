@@ -14,9 +14,9 @@
         @foreach($stations as $station)
             <tr class="alt">
                 <td scope="row">{{ $i }}</td>
-                <td>{{ $station->country }}</td>
-                <td>{{ $station->station }}</td>
-                <td>{{ number_format($station->average,2) }}</td>
+                <td>{{ $station['country'] }}</td>
+                <td>{{ $station['name'] }}</td>
+                <td>{{ number_format($station['averageVisibility'],2) }}</td>
             </tr>
             <?php $i++ ?>
         @endforeach
