@@ -127,6 +127,7 @@ class GenerateTopTenAsia extends Command
 
             $bar->advance();
             fclose($fileResource);
+            break; // @DEBUG: for debuggings sake only process a single file/hour 
         }
 
         // average the visibility measurements
