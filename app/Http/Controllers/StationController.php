@@ -30,7 +30,7 @@ class StationController extends Controller
                 break;
         }
 
-        dd($stations); //average average
+        // dd($stations); //average average
         return view("stations.index", ["stations" => $stations]);
     }
 
