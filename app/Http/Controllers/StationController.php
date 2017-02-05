@@ -20,7 +20,17 @@ class StationController extends Controller
         $carbonDate = Carbon::yesterday('Europe/Amsterdam');
         $stations = FilestoreHandler::getTopTenAsiaForDate($carbonDate);
 
-        #dd($stations); //average average
+        $maxDaysBack = 10; // safety variable to prevent infinite loop
+        while (!$stations) {
+            $carbonDate->subDay();
+            $stations = FilestoreHandler::getTopTenAsiaForDate($carbonDate);
+
+            $maxDaysBack--;
+            if ($maxDaysBack === 0)
+                break;
+        }
+
+        dd($stations); //average average
         return view("stations.index", ["stations" => $stations]);
     }
 
