@@ -118,13 +118,13 @@
                     if (_xPointCounter == 120) {
                         // refresh graph
                         myLineChart.data.datasets[0].data = [];
-                        myLineChart.data.datasets[0].data[0] = myObj.data[0];
+                        myLineChart.data.datasets[0].data[0] = myObj.data[0]+"%";
                         _xPointCounter = 1;
                         myLineChart.update();
                         console.log("refreshing chart");
                         return;
                     }
-                    myLineChart.data.datasets[0].data[_xPointCounter++] = myObj.data[0];
+                    myLineChart.data.datasets[0].data[_xPointCounter++] = myObj.data[0]+"%";
                     console.log("updating chart");
                     myLineChart.update();
                 }
