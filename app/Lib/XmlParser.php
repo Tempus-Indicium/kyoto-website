@@ -10,17 +10,14 @@ class XmlParser {
         $split = explode(':{', $striped);
         $amount = count($split);
         $xml = '';
+        $xml .= "<root>";
 
         for ($i = 0; $i < $amount; $i++) {
             $split[$i] = str_replace('{', '', $split[$i]);
             $split[$i] = str_replace('}', '', $split[$i]);
             $split[$i] = explode(',', $split[$i]);
-
-//            $count = count($split[$i]);
-//            for ($j = 0; $j < $count; $j++) {
-//                $split[$i][$j] = explode(':', $split[$i][$j]);
-//            }
         }
+
         $saves = [];
         for ($i = $amount - 1; $i >= 0; $i--) {
             $temp = $split[$i];
@@ -41,8 +38,8 @@ class XmlParser {
             $xml = '<'.$tag.'>'.$xml.'</'.$tag.'>';
         }
 
+        $xml .= "</root>";
         return $xml;
     }
 
 }
-

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Lib\FilestoreHandler;
+use App\Lib\XmlParser;
 use App\Station;
 use App\User;
 use Carbon\Carbon;
@@ -41,8 +42,16 @@ class ApiController extends Controller
             ]);
         }
 
+        if ($request->get('json')) {
+            return response()
+            ->json([
+                'status' => 'success',
+                'data' => $resultData,
+            ]);
+        }
+        // else return xml
         return response()
-        ->json([
+        ->xml([
             'status' => 'success',
             'data' => $resultData,
         ]);
@@ -78,9 +87,16 @@ class ApiController extends Controller
 
         $result = FilestoreHandler::getLastFiveSecondsForStation($station, $fullFilePath);
 
-        // @TODO: return xml when needed
+        if ($request->get('json') == 1) {
+            return response()
+            ->json([
+                'status' => 'success',
+                'data' => $result,
+            ]);
+        }
+        // else return xml
         return response()
-        ->json([
+        ->xml([
             'status' => 'success',
             'data' => $result,
         ]);
