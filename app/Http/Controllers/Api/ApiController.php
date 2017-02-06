@@ -85,6 +85,14 @@ class ApiController extends Controller
             ]);
         }
 
+        if (!file_exists($fullFilePath)) {
+            return response()
+            ->json([
+                'status' => 'error',
+                'error' => 'The file-store seems to be missing a file for the current hour, are the data gathering process applications running?',
+            ]);
+        }
+
         $result = FilestoreHandler::getLastFiveSecondsForStation($station, $fullFilePath);
 
         if ($request->get('json') == 1) {
